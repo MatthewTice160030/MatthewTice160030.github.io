@@ -8,6 +8,7 @@ const drop_spawn_rate = 0.95;
 function resizeCanvas() {
     cancelAnimationFrame(animation_id);
 
+    // Detect mobile
     if(/Mobi|Android/i.test(navigator.userAgent)) { 
         do_animation = false;
     }
@@ -20,7 +21,8 @@ function resizeCanvas() {
 
     var temp_width = 15, diff = 1;
     var curr_columns = style_width * dpi / temp_width;
-    while(columns % 1 !== 0 && temp_width < 25) {
+    columns = curr_columns, width = temp_width;
+    while(curr_columns % 1 !== 0 && temp_width < 25) {
         temp_width++;
         curr_columns = style_width * dpi / temp_width;
         console.log(curr_columns, Math.round(curr_columns), Math.abs(curr_columns - Math.round(curr_columns)))
