@@ -18,16 +18,3 @@
 p {
   margin: 0px;
 }
-
-/* Fix for wrapping navbar on mobile */
-@media (min-width: 460px) {
-  .navbar-right {
-    float: right!important;
-    margin-right: -15px;
-  }
-}
-@media (min-width: 460px) {
-  .navbar-header {
-    float: left;
-  }
-}
