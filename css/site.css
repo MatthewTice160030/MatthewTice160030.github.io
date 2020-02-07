@@ -1,20 +1,30 @@
-.nav-item {
-  color: white;
+body {
+  font-family: "Open Sans", serif;
+  color: black;
 }
-#bg_left {
-  background: #000;
-  z-index: -999;
-  top: 0; 
-  left: 0; 
-  position: fixed; 
-}
-#bg_right {
-  background: #000;
-  z-index: -999;
-  top: 0; 
-  right: 0; 
-  position: fixed;
+h4{
+  font-weight: 700;
+  font-size: 20pt;
+  margin-bottom: 30px;
 }
 p {
-  margin: 0px;
+  font-size: 14pt;
+}
+#bg_left, #bg_right {
+  background: #000;
+  z-index: -999;
+  top: 0; 
+  position: fixed; 
+}
+#bg_left {
+  left: 0;
+}
+#bg_right{
+  right: 0;
+}
+.container > .container{
+  padding: 50px 50px;
+}
+.nav-item {
+  color: white;
 }

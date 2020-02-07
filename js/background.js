@@ -33,10 +33,10 @@ function resizeCanvas() {
             diff = Math.abs(curr_columns - Math.round(curr_columns));
         }
     }
-
+    
+    // Initialize drops to random height aligned to grid.
     left_drops = [], right_drops = [];
-
-    // Initialize drops to random height aligned to grid
+    
     for (var i = 0; i < columns; i++) {
         left_drops[i] = Math.floor(Math.random() * (style_height / width)) * width;
         right_drops[i] = Math.floor(Math.random() * (style_height / width)) * width;
@@ -60,7 +60,7 @@ function resizeCanvas() {
     }
 }
 
-// Draw drops
+// Draw drops, skip every other frame animation to reduce the speed.
 function draw() {
     if (frameSkip) {
         for (var i = 0; i < columns; i++) {
@@ -86,6 +86,7 @@ function draw() {
     animation_id = requestAnimationFrame(draw);
 }
 
+// Function to draw a trail of squares with fading trail.
 function drawSquare(ctx, x, y, width, border_thickness = 2) {
     let step = 0.1, gamma = 1.0;
     for (var i = 0; gamma > 0; gamma -= step, i++) {
@@ -101,10 +102,20 @@ function drawSquare(ctx, x, y, width, border_thickness = 2) {
     }   
 }
 
+// Helper function to clear squares from column when it is deleted.
 function clearColumn(ctx, x, width) {
     ctx.fillStyle = "#000";
     ctx.fillRect(x, 0, width, ctx.canvas.clientHeight);
 }
 
+// Detect Bootstrap changes in main container, update canvas when dimensions change.
+var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutationRecord) {
+        resizeCanvas();
+    });    
+});
+observer.observe($("#main").get()[0], { attributes : true, attributeFilter : ["style"] });
+
+// Update canvas on document ready and window resize
 $(document).ready(resizeCanvas);
 $(window).bind("resize", resizeCanvas);
