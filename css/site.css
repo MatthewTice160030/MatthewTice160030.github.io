@@ -30,6 +30,9 @@ p {
 .container > .container {
   padding: 50px 50px;
 }
+.chart {
+  margin: 20px;
+}
 .nav-item {
   color: white;
 }
